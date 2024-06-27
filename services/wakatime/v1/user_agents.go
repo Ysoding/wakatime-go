@@ -37,13 +37,13 @@ func (c *Client) UserAgents(req *UserAgentsRequest) (*UserAgentsResponse, error)
 		req.BaseRequest.URL = "users/{user_id}/user_agents"
 	}
 
-	resp := NewUserAgentResponse()
+	resp := NewUserAgentsResponse()
 
 	err := c.Send(req, resp)
 	return resp, err
 }
 
-func NewUserAgentResponse() *UserAgentsResponse {
+func NewUserAgentsResponse() *UserAgentsResponse {
 	return &UserAgentsResponse{
 		BaseResponse: &response.BaseResponse{},
 	}
