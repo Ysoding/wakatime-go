@@ -8,8 +8,8 @@ import (
 
 type AllTimeRequest struct {
 	*request.BaseRequest
-	Project *string `json:"project"`
-	User    *string `json:"user"`
+	Project *string `json:"project,omitempty"`
+	User    *string `json:"user,omitempty"`
 	Current *bool   `json:"-"`
 }
 

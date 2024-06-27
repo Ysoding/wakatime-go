@@ -10,7 +10,7 @@ import (
 
 type UserRequest struct {
 	*request.BaseRequest
-	User    *string `json:"user_id"`
+	User    *string `json:"user_id,omitempty"`
 	Current *bool   `json:"-"`
 }
 
