@@ -30,7 +30,9 @@ func (c *Client) AllTime(req *AllTimeRequest) (*AllTimeResponse, error) {
 
 	if req.Current != nil && *req.Current {
 		req.BaseRequest.URL = "users/current/all_time_since_today"
-	} else {
+	}
+
+	if req.User != nil {
 		req.BaseRequest.URL = "users/{user}/all_time_since_today"
 	}
 
