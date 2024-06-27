@@ -10,7 +10,7 @@ type AllTimeRequest struct {
 	*request.BaseRequest
 	Project *string `json:"project"`
 	UserID  *string `json:"user_id"`
-	Current *bool   `json:"current"`
+	Current *bool   `json:"-"`
 }
 
 func NewAllTimeRequest() *AllTimeRequest {
