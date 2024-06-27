@@ -13,7 +13,7 @@ func main() {
 
 	// req := wakatimev1.NewAllTimeRequest()
 	// req.Current = sdk.Bool(false)
-	// req.UserID = sdk.String("Tesla")
+	// req.User = sdk.String("Tesla")
 	// req.Project = sdk.String("wakatime-go")
 
 	// res, err := client.AllTime(req)

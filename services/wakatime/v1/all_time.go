@@ -9,7 +9,7 @@ import (
 type AllTimeRequest struct {
 	*request.BaseRequest
 	Project *string `json:"project"`
-	UserID  *string `json:"user_id"`
+	User    *string `json:"user"`
 	Current *bool   `json:"-"`
 }
 
@@ -31,7 +31,7 @@ func (c *Client) AllTime(req *AllTimeRequest) (*AllTimeResponse, error) {
 	if req.Current != nil && *req.Current {
 		req.BaseRequest.URL = "users/current/all_time_since_today"
 	} else {
-		req.BaseRequest.URL = "users/{user_id}/all_time_since_today"
+		req.BaseRequest.URL = "users/{user}/all_time_since_today"
 	}
 
 	resp := NewAllTimeResponse()
