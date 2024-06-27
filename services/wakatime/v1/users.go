@@ -24,7 +24,7 @@ func NewUserRequest() *UserRequest {
 	}
 }
 
-func (c *Client) User(req *UserRequest) (*UsersResponse, error) {
+func (c *Client) User(req *UserRequest) (*UserResponse, error) {
 	if req == nil {
 		req = NewUserRequest()
 	}
@@ -37,19 +37,19 @@ func (c *Client) User(req *UserRequest) (*UsersResponse, error) {
 		req.BaseRequest.URL = "users/{user_id}"
 	}
 
-	resp := NewUsersResponse()
+	resp := NewUserResponse()
 
 	err := c.Send(req, resp)
 	return resp, err
 }
 
-func NewUsersResponse() *UsersResponse {
-	return &UsersResponse{
+func NewUserResponse() *UserResponse {
+	return &UserResponse{
 		BaseResponse: &response.BaseResponse{},
 	}
 }
 
-type UsersResponse struct {
+type UserResponse struct {
 	*response.BaseResponse
 	Data User `json:"data"`
 }
