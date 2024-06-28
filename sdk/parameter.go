@@ -40,7 +40,7 @@ type ParameterBuilder interface {
 }
 
 func GetParameterBuilder(method string) ParameterBuilder {
-	if method == MethodGet || method == MethodDelete || method == MethodHead {
+	if method == MethodGet || method == MethodHead {
 		return &WithoutBodyBuilder{}
 	}
 	return &WithBodyBuilder{}
