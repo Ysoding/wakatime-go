@@ -2,6 +2,23 @@ package v1
 
 import "time"
 
+type IPData struct {
+	IPs            IPAddresses       `json:"ips"`
+	IPDescriptions map[string]string `json:"ip_descriptions"`
+	LastModifiedAt string            `json:"last_modified_at"`
+}
+
+type IPAddresses struct {
+	API     IPVersion `json:"api"`
+	Website IPVersion `json:"website"`
+	Worker  IPVersion `json:"worker"`
+}
+
+type IPVersion struct {
+	V4 []string `json:"v4"`
+	V6 []string `json:"v6"`
+}
+
 type OrgDashboardMemberDurationsData struct {
 	Project  string  `json:"project"`
 	Time     float64 `json:"time"`
