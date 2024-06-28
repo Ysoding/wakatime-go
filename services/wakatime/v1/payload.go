@@ -2,6 +2,70 @@ package v1
 
 import "time"
 
+type OrgDashboardMemberDurationsData struct {
+	Project  string  `json:"project"`
+	Time     float64 `json:"time"`
+	Duration float64 `json:"duration"`
+}
+
+type OrgDashboardMemberSummariesData struct {
+	GrandTotal       GrandTotal        `json:"grand_total"`
+	Projects         []Project         `json:"projects"`
+	Languages        []Language        `json:"languages"`
+	Editors          []Editor          `json:"editors"`
+	OperatingSystems []OperatingSystem `json:"operating_systems"`
+	Branches         []Branch          `json:"branches,omitempty"` // included only when project url parameter used
+	Entities         []Entity          `json:"entities,omitempty"` // included only when project url parameter used
+	Range            DayRange          `json:"range"`
+}
+
+type DayRange struct {
+	Date     string `json:"date"`
+	Start    string `json:"start"`
+	End      string `json:"end"`
+	Text     string `json:"text"`
+	Timezone string `json:"timezone"`
+}
+
+type DashboardMember struct {
+	ID         string `json:"id"`
+	Email      string `json:"email"`
+	FullName   string `json:"full_name"`
+	IsViewOnly bool   `json:"is_view_only"`
+	Photo      string `json:"photo"`
+	Username   string `json:"username"`
+}
+
+type Organization struct {
+	ID                                       string    `json:"id"`
+	Name                                     string    `json:"name"`
+	DefaultProjectPrivacy                    string    `json:"default_project_privacy"`
+	InvitedPeopleCount                       int       `json:"invited_people_count"`
+	InvitedPeopleCountHumanReadable          string    `json:"invited_people_count_human_readable"`
+	IsDurationVisible                        bool      `json:"is_duration_visible"`
+	PeopleCount                              int       `json:"people_count"`
+	PeopleCountHumanReadable                 string    `json:"people_count_human_readable"`
+	Timeout                                  int       `json:"timeout"`
+	Timezone                                 int       `json:"timezone"`
+	WritesOnly                               int       `json:"writes_only"`
+	CanCurrentUserListDashboards             bool      `json:"can_current_user_list_dashboards"`
+	CanCurrentUserCreateDashboards           bool      `json:"can_current_user_create_dashboards"`
+	CanCurrentUserDisplayCodingOnDashboards  bool      `json:"can_current_user_display_coding_on_dashboards"`
+	CanCurrentUserViewAllDashboards          bool      `json:"can_current_user_view_all_dashboards"`
+	CanCurrentUserAddPeopleToDashboards      bool      `json:"can_current_user_add_people_to_dashboards"`
+	CanCurrentUserRemovePeopleFromDashboards bool      `json:"can_current_user_remove_people_from_dashboards"`
+	CanCurrentUserEditAndDeleteDashboards    bool      `json:"can_current_user_edit_and_delete_dashboards"`
+	CanCurrentUserAddPeopleToOrg             bool      `json:"can_current_user_add_people_to_org"`
+	CanCurrentUserRemovePeopleFromOrg        bool      `json:"can_current_user_remove_people_from_org"`
+	CanCurrentUserManageGroups               bool      `json:"can_current_user_manage_groups"`
+	CanCurrentUserViewAuditLog               bool      `json:"can_current_user_view_audit_log"`
+	CanCurrentUserEditOrg                    bool      `json:"can_current_user_edit_org"`
+	CanCurrentUserManageBilling              bool      `json:"can_current_user_manage_billing"`
+	CanCurrentUserDeleteOrg                  bool      `json:"can_current_user_delete_org"`
+	CreatedAt                                time.Time `json:"created_at"`
+	ModifiedAt                               time.Time `json:"modified_at"`
+}
+
 type PrivateLeaderboard struct {
 	CanDelete                 bool      `json:"can_delete"`
 	CanEdit                   bool      `json:"can_edit"`
