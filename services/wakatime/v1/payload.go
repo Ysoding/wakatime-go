@@ -2,6 +2,16 @@ package v1
 
 import "time"
 
+type MachineData struct {
+	ID         string    `json:"id"`
+	Name       string    `json:"name"`
+	Value      string    `json:"value"`
+	IP         string    `json:"ip"`
+	LastSeenAt time.Time `json:"last_seen_at"`
+	Timezone   string    `json:"timezone"`
+	CreatedAt  time.Time `json:"created_at"`
+}
+
 type IPData struct {
 	IPs            IPAddresses       `json:"ips"`
 	IPDescriptions map[string]string `json:"ip_descriptions"`
