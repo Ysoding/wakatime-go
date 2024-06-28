@@ -2,6 +2,55 @@ package v1
 
 import "time"
 
+type PrivateLeaderboard struct {
+	CanDelete                 bool      `json:"can_delete"`
+	CanEdit                   bool      `json:"can_edit"`
+	CreatedAt                 time.Time `json:"created_at"`
+	HasAvailableSeat          bool      `json:"has_available_seat"`
+	ID                        string    `json:"id"`
+	MembersCount              int       `json:"members_count"`
+	MembersWithTimezonesCount int       `json:"members_with_timezones_count"`
+	ModifiedAt                time.Time `json:"modified_at"`
+	Name                      string    `json:"name"`
+	TimeRange                 string    `json:"time_range"`
+}
+
+type LeaderboardMember struct {
+	Rank int             `json:"rank"`
+	Page int             `json:"page"`
+	User LeaderboardUser `json:"user"`
+}
+
+type LeaderboardUser struct {
+	ID                   string          `json:"id"`
+	Email                string          `json:"email"`
+	Username             string          `json:"username"`
+	FullName             string          `json:"full_name"`
+	DisplayName          string          `json:"display_name"`
+	Website              string          `json:"website"`
+	HumanReadableWebsite string          `json:"human_readable_website"`
+	IsHireable           bool            `json:"is_hireable"`
+	City                 LeaderboardCity `json:"city"`
+	IsEmailPublic        bool            `json:"is_email_public"`
+	PhotoPublic          bool            `json:"photo_public"`
+}
+
+type LeaderboardCity struct {
+	CountryCode string `json:"country_code"`
+	Name        string `json:"name"`
+	State       string `json:"state"`
+	Title       string `json:"title"`
+}
+
+type LeaderboardRange struct {
+	StartDate string `json:"start_date"`
+	StartText string `json:"start_text"`
+	EndDate   string `json:"end_date"`
+	EndText   string `json:"end_text"`
+	Name      string `json:"name"`
+	Text      string `json:"text"`
+}
+
 type ProgramLanguageDetail struct {
 	ID         string    `json:"id"`
 	Name       string    `json:"name"`
