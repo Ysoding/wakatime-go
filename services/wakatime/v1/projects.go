@@ -51,5 +51,5 @@ func NewProjectsResponse() *ProjectsResponse {
 
 type ProjectsResponse struct {
 	*response.BaseResponse
-	Data []ProjectsData `json:"data"`
+	Data []ProjectDetail `json:"data"`
 }

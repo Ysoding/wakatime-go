@@ -2,7 +2,16 @@ package v1
 
 import "time"
 
-type ProjectsData struct {
+type ProgramLanguageDetail struct {
+	ID         string    `json:"id"`
+	Name       string    `json:"name"`
+	Color      string    `json:"color"`
+	IsVerified bool      `json:"is_verified"`
+	CreatedAt  time.Time `json:"created_at"`
+	ModifiedAt time.Time `json:"modified_at"`
+}
+
+type ProjectDetail struct {
 	ID                            string    `json:"id"`
 	Name                          string    `json:"name"`
 	Repository                    string    `json:"repository"`
