@@ -2,6 +2,23 @@ package v1
 
 import "time"
 
+type ProjectsData struct {
+	ID                            string    `json:"id"`
+	Name                          string    `json:"name"`
+	Repository                    string    `json:"repository"`
+	Badge                         string    `json:"badge"`
+	Color                         string    `json:"color"`
+	Clients                       []string  `json:"clients"`
+	HasPublicURL                  bool      `json:"has_public_url"`
+	HumanReadableLastHeartbeatAt  string    `json:"human_readable_last_heartbeat_at"`
+	LastHeartbeatAt               string    `json:"last_heartbeat_at"`
+	HumanReadableFirstHeartbeatAt string    `json:"human_readable_first_heartbeat_at"`
+	FirstHeartbeatAt              string    `json:"first_heartbeat_at"`
+	URL                           string    `json:"url"`
+	URLEncodedName                string    `json:"urlencoded_name"`
+	CreatedAt                     time.Time `json:"created_at"`
+}
+
 type StatsData struct {
 	TotalSeconds                       float64           `json:"total_seconds"`
 	TotalSecondsIncludingOtherLanguage float64           `json:"total_seconds_including_other_language"`
