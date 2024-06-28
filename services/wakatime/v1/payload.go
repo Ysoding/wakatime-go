@@ -2,6 +2,25 @@ package v1
 
 import "time"
 
+type InsightsData struct {
+	InsightType        string      `json:"insight_type"`
+	InsightData        interface{} `json:"data"` // This can be either an object or array, so using interface{}
+	Range              string      `json:"range"`
+	HumanReadableRange string      `json:"human_readable_range"`
+	Status             string      `json:"status"`
+	IsIncludingToday   bool        `json:"is_including_today"`
+	IsUpToDate         bool        `json:"is_up_to_date"`
+	PercentCalculated  int         `json:"percent_calculated"`
+	Start              string      `json:"start"`
+	End                string      `json:"end"`
+	Timezone           string      `json:"timezone"`
+	Timeout            int         `json:"timeout"`
+	WritesOnly         bool        `json:"writes_only"`
+	UserID             string      `json:"user_id"`
+	CreatedAt          string      `json:"created_at"`
+	ModifiedAt         string      `json:"modified_at"`
+}
+
 type Leader struct {
 	Rank         int `json:"rank"`
 	RunningTotal struct {
