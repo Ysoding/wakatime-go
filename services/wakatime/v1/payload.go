@@ -2,6 +2,21 @@ package v1
 
 import "time"
 
+type Leader struct {
+	Rank         int `json:"rank"`
+	RunningTotal struct {
+		TotalSeconds              float64 `json:"total_seconds"`
+		HumanReadableTotal        string  `json:"human_readable_total"`
+		DailyAverage              float64 `json:"daily_average"`
+		HumanReadableDailyAverage string  `json:"human_readable_daily_average"`
+		Languages                 []struct {
+			Name         string  `json:"name"`
+			TotalSeconds float64 `json:"total_seconds"`
+		} `json:"languages"`
+	} `json:"running_total"`
+	User User `json:"user"`
+}
+
 type MachineData struct {
 	ID         string    `json:"id"`
 	Name       string    `json:"name"`
@@ -113,24 +128,17 @@ type LeaderboardMember struct {
 }
 
 type LeaderboardUser struct {
-	ID                   string          `json:"id"`
-	Email                string          `json:"email"`
-	Username             string          `json:"username"`
-	FullName             string          `json:"full_name"`
-	DisplayName          string          `json:"display_name"`
-	Website              string          `json:"website"`
-	HumanReadableWebsite string          `json:"human_readable_website"`
-	IsHireable           bool            `json:"is_hireable"`
-	City                 LeaderboardCity `json:"city"`
-	IsEmailPublic        bool            `json:"is_email_public"`
-	PhotoPublic          bool            `json:"photo_public"`
-}
-
-type LeaderboardCity struct {
-	CountryCode string `json:"country_code"`
-	Name        string `json:"name"`
-	State       string `json:"state"`
-	Title       string `json:"title"`
+	ID                   string `json:"id"`
+	Email                string `json:"email"`
+	Username             string `json:"username"`
+	FullName             string `json:"full_name"`
+	DisplayName          string `json:"display_name"`
+	Website              string `json:"website"`
+	HumanReadableWebsite string `json:"human_readable_website"`
+	IsHireable           bool   `json:"is_hireable"`
+	City                 City   `json:"city"`
+	IsEmailPublic        bool   `json:"is_email_public"`
+	PhotoPublic          bool   `json:"photo_public"`
 }
 
 type LeaderboardRange struct {
