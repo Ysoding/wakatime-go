@@ -2,6 +2,53 @@ package v1
 
 import "time"
 
+type StatsData struct {
+	TotalSeconds                       float64           `json:"total_seconds"`
+	TotalSecondsIncludingOtherLanguage float64           `json:"total_seconds_including_other_language"`
+	HumanReadableTotal                 string            `json:"human_readable_total"`
+	HumanReadableTotalIncludingOther   string            `json:"human_readable_total_including_other_language"`
+	DailyAverage                       float64           `json:"daily_average"`
+	DailyAverageIncludingOtherLanguage float64           `json:"daily_average_including_other_language"`
+	HumanReadableDailyAverage          string            `json:"human_readable_daily_average"`
+	HumanReadableDailyAverageIncluding string            `json:"human_readable_daily_average_including_other_language"`
+	Categories                         []Category        `json:"categories"`
+	Projects                           []Project         `json:"projects"`
+	Languages                          []Language        `json:"languages"`
+	Editors                            []Editor          `json:"editors"`
+	OperatingSystems                   []OperatingSystem `json:"operating_systems"`
+	Dependencies                       []Dependency      `json:"dependencies"`
+	Machines                           []Machine         `json:"machines"`
+	BestDay                            BestDay           `json:"best_day"`
+	Range                              string            `json:"range"`
+	HumanReadableRange                 string            `json:"human_readable_range"`
+	Holidays                           int               `json:"holidays"`
+	DaysIncludingHolidays              int               `json:"days_including_holidays"`
+	DaysMinusHolidays                  int               `json:"days_minus_holidays"`
+	Status                             string            `json:"status"`
+	PercentCalculated                  int               `json:"percent_calculated"`
+	IsAlreadyUpdating                  bool              `json:"is_already_updating"`
+	IsCodingActivityVisible            bool              `json:"is_coding_activity_visible"`
+	IsOtherUsageVisible                bool              `json:"is_other_usage_visible"`
+	IsStuck                            bool              `json:"is_stuck"`
+	IsIncludingToday                   bool              `json:"is_including_today"`
+	IsUpToDate                         bool              `json:"is_up_to_date"`
+	Start                              string            `json:"start"`
+	End                                string            `json:"end"`
+	Timezone                           string            `json:"timezone"`
+	Timeout                            int               `json:"timeout"`
+	WritesOnly                         bool              `json:"writes_only"`
+	UserID                             string            `json:"user_id"`
+	Username                           string            `json:"username"`
+	CreatedAt                          time.Time         `json:"created_at"`
+	ModifiedAt                         time.Time         `json:"modified_at"`
+}
+
+type BestDay struct {
+	Date         string  `json:"date"`
+	Text         string  `json:"text"`
+	TotalSeconds float64 `json:"total_seconds"`
+}
+
 type TimeData struct {
 	DailyAverage      float64   `json:"daily_average"`
 	Decimal           string    `json:"decimal"`
@@ -36,140 +83,53 @@ type StatsAggregatedData struct {
 	WritesOnly       bool                   `json:"writes_only"`
 }
 
+type AverageData struct {
+	Seconds float64 `json:"seconds"`
+	Text    string  `json:"text"`
+}
+
+type CountData struct {
+	Text string `json:"text"`
+}
+
+type StatsBase struct {
+	Average AverageData `json:"average"`
+	Count   CountData   `json:"count"`
+	Max     AverageData `json:"max"`
+	Median  AverageData `json:"median"`
+	Sum     AverageData `json:"sum"`
+}
+
 type CategoryStats struct {
 	Name       string `json:"name"`
 	IsVerified bool   `json:"is_verified"`
-	Average    struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"average"`
-	Count struct {
-		Text string `json:"text"`
-	} `json:"count"`
-	Max struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"max"`
-	Median struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"median"`
-	Sum struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"sum"`
+	StatsBase
 }
 
 type DailyAverageStats struct {
-	Average struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"average"`
-	Count struct {
-		Text string `json:"text"`
-	} `json:"count"`
-	Max struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"max"`
-	Median struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"median"`
+	StatsBase
 }
 
 type EditorStats struct {
 	Name       string `json:"name"`
 	IsVerified bool   `json:"is_verified"`
-	Average    struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"average"`
-	Count struct {
-		Text string `json:"text"`
-	} `json:"count"`
-	Max struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"max"`
-	Median struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"median"`
-	Sum struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"sum"`
+	StatsBase
 }
 
 type LanguageStats struct {
 	Name       string `json:"name"`
 	IsVerified bool   `json:"is_verified"`
-	Average    struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"average"`
-	Count struct {
-		Text string `json:"text"`
-	} `json:"count"`
-	Max struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"max"`
-	Median struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"median"`
-	Sum struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"sum"`
+	StatsBase
 }
 
 type OperatingSystemStats struct {
 	Name       string `json:"name"`
 	IsVerified bool   `json:"is_verified"`
-	Average    struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"average"`
-	Count struct {
-		Text string `json:"text"`
-	} `json:"count"`
-	Max struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"max"`
-	Median struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"median"`
-	Sum struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"sum"`
+	StatsBase
 }
 
 type TotalStats struct {
-	Average struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"average"`
-	Count struct {
-		Text string `json:"text"`
-	} `json:"count"`
-	Max struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"max"`
-	Median struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"median"`
-	Sum struct {
-		Seconds float64 `json:"seconds"`
-		Text    string  `json:"text"`
-	} `json:"sum"`
+	StatsBase
 }
 
 type SummaryRangeStats struct {
@@ -203,27 +163,7 @@ type GrandTotal struct {
 	TotalSeconds float64 `json:"total_seconds"`
 }
 
-type Category struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-}
-
-type Project struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-}
-
-type Language struct {
+type SummaryBase struct {
 	Name         string  `json:"name"`
 	TotalSeconds float64 `json:"total_seconds"`
 	Percent      float64 `json:"percent"`
@@ -234,72 +174,20 @@ type Language struct {
 	Seconds      int     `json:"seconds"`
 }
 
-type Editor struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-	Seconds      int     `json:"seconds"`
-}
-
-type OperatingSystem struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-	Seconds      int     `json:"seconds"`
-}
-
-type Dependency struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-	Seconds      int     `json:"seconds"`
-}
-
+type Category SummaryBase
+type Project SummaryBase
+type Language SummaryBase
+type Editor SummaryBase
+type OperatingSystem SummaryBase
+type Dependency SummaryBase
 type Machine struct {
-	Name          string  `json:"name"`
-	MachineNameID string  `json:"machine_name_id"`
-	TotalSeconds  float64 `json:"total_seconds"`
-	Percent       float64 `json:"percent"`
-	Digital       string  `json:"digital"`
-	Text          string  `json:"text"`
-	Hours         int     `json:"hours"`
-	Minutes       int     `json:"minutes"`
-	Seconds       int     `json:"seconds"`
+	SummaryBase
+	MachineNameID string `json:"machine_name_id"`
 }
 
-type Branch struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-	Seconds      int     `json:"seconds"`
-}
+type Branch SummaryBase
 
-type Entity struct {
-	Name         string  `json:"name"`
-	TotalSeconds float64 `json:"total_seconds"`
-	Percent      float64 `json:"percent"`
-	Digital      string  `json:"digital"`
-	Text         string  `json:"text"`
-	Hours        int     `json:"hours"`
-	Minutes      int     `json:"minutes"`
-	Seconds      int     `json:"seconds"`
-}
+type Entity SummaryBase
 
 type SummaryRange struct {
 	Date     string `json:"date"`

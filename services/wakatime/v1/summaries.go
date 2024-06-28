@@ -8,37 +8,20 @@ import (
 	"github.com/Ysoding/wakatime-go/sdk/response"
 )
 
-//
-
-type RangeOption string
-
-const (
-	RangeToday                  RangeOption = "Today"
-	RangeYesterday              RangeOption = "Yesterday"
-	RangeLast7Days              RangeOption = "Last 7 Days"
-	RangeLast7DaysFromYesterday RangeOption = "Last 7 Days from Yesterday"
-	RangeLast14Days             RangeOption = "Last 14 Days"
-	RangeLast30Days             RangeOption = "Last 30 Days"
-	RangeThisWeek               RangeOption = "This Week"
-	RangeLastWeek               RangeOption = "Last Week"
-	RangeThisMonth              RangeOption = "This Month"
-	RangeLastMonth              RangeOption = "Last Month"
-)
-
 type SummariesRequest struct {
 	*request.BaseRequest
 
 	Start time.Time `json:"start"`
 	End   time.Time `json:"end"`
 
-	Current    *bool        `json:"-"`
-	User       *string      `json:"user_id,omitempty"`
-	Project    *string      `json:"project,omitempty"`
-	Branches   *string      `json:"branches,omitempty"`
-	Timeout    *int         `json:"timeout,omitempty"`
-	WritesOnly *bool        `json:"writes_only,omitempty"`
-	Timezone   *string      `json:"timezone,omitempty"`
-	Range      *RangeOption `json:"range,omitempty"`
+	Current    *bool                 `json:"-"`
+	User       *string               `json:"user_id,omitempty"`
+	Project    *string               `json:"project,omitempty"`
+	Branches   *string               `json:"branches,omitempty"`
+	Timeout    *int                  `json:"timeout,omitempty"`
+	WritesOnly *bool                 `json:"writes_only,omitempty"`
+	Timezone   *string               `json:"timezone,omitempty"`
+	Range      *SummariesRangeOption `json:"range,omitempty"`
 }
 
 func NewSummariesRequest(start time.Time, end time.Time) *SummariesRequest {
