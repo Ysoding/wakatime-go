@@ -1,8 +1,6 @@
 package v1
 
 import (
-	"time"
-
 	"github.com/Ysoding/wakatime-go/sdk"
 	"github.com/Ysoding/wakatime-go/sdk/request"
 	"github.com/Ysoding/wakatime-go/sdk/response"
@@ -52,16 +50,4 @@ func NewUserAgentsResponse() *UserAgentsResponse {
 type UserAgentsResponse struct {
 	*response.BaseResponse
 	Data []UserAgent `json:"data"`
-}
-
-type UserAgent struct {
-	ID                 string    `json:"id"`
-	Value              string    `json:"value"`
-	Editor             string    `json:"editor"`
-	Version            string    `json:"version"`
-	OS                 string    `json:"os"`
-	LastSeenAt         time.Time `json:"last_seen_at"`
-	IsBrowserExtension bool      `json:"is_browser_extension"`
-	IsDesktopApp       bool      `json:"is_desktop_app"`
-	CreatedAt          time.Time `json:"created_at"`
 }

@@ -52,25 +52,3 @@ type AllTimeResponse struct {
 	*response.BaseResponse
 	Data TimeData `json:"data"`
 }
-
-type TimeData struct {
-	DailyAverage      float64   `json:"daily_average"`
-	Decimal           string    `json:"decimal"`
-	Digital           string    `json:"digital"`
-	IsUpToDate        bool      `json:"is_up_to_date"`
-	PercentCalculated int       `json:"percent_calculated"`
-	Range             TimeRange `json:"range"`
-	Text              string    `json:"text"`
-	Timeout           int       `json:"timeout"`
-	TotalSeconds      float64   `json:"total_seconds"`
-}
-
-type TimeRange struct {
-	End       string `json:"end"`
-	EndDate   string `json:"end_date"`
-	EndText   string `json:"end_text"`
-	Start     string `json:"start"`
-	StartDate string `json:"start_date"`
-	StartText string `json:"start_text"`
-	Timezone  string `json:"timezone"`
-}
