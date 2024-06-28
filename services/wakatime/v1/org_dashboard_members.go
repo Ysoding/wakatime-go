@@ -1,8 +1,6 @@
 package v1
 
 import (
-	"fmt"
-
 	"github.com/Ysoding/wakatime-go/sdk"
 	"github.com/Ysoding/wakatime-go/sdk/request"
 	"github.com/Ysoding/wakatime-go/sdk/response"
@@ -41,11 +39,7 @@ func (c *Client) OrgDashboardMembers(req *OrgDashboardMembersRequest) (*OrgDashb
 		req.BaseRequest.URL = "users/{user}"
 	}
 
-	req.BaseRequest.URL = fmt.Sprintf("%s/orgs/%s/dashboards/%s/members",
-		req.BaseRequest.URL,
-		req.Org,
-		req.Dashboard,
-	)
+	req.BaseRequest.URL += "%s/orgs/{org}/dashboards/{dashboard}/members"
 
 	resp := NewOrgDashboardMembersResponse()
 
